@@ -1,0 +1,9 @@
+[submodule "odoo/src"]
+	path = odoo/src
+	url = git@github.com:OCA/OCB.git
+[submodule "odoo/external-src/odoo-extra"]
+	path = odoo/external-src/odoo-extra
+	url = https://github.com/odoo/odoo-extra
+[submodule "odoo/external-src/runbot-addons"]
+	path = odoo/external-src/runbot-addons
+	url = https://github.com/OCA/runbot-addons

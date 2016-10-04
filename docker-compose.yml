@@ -1,0 +1,38 @@
+version: '2'
+services:
+  odoo:
+    build: ./odoo/
+    volumes:
+      - "data-odoo:/data/odoo"
+      - "data-runbot:/opt/odoo/external-src/odoo-extra/runbot/static/repo"
+    depends_on:
+      - db
+    environment:
+      - DB_USER=odoo
+      - DB_PASSWORD=odoo
+      - DB_NAME=odoodb
+      - ADMIN_PASSWD=admin
+      - LIMIT_TIME_CPU=5000
+      - LIMIT_TIME_REAL=5000
+      - RUNNING_ENV=dev
+      - DEMO=False
+
+  db:
+    image: postgres:9.5
+    environment:
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+    volumes:
+      - "data-db:/var/lib/postgresql/data"
+    expose:
+      - 5432
+
+  nginx:
+    image: camptocamp/odoo-nginx:9.0
+    depends_on:
+      - odoo
+
+volumes:
+  data-odoo:
+  data-db:
+  data-runbot:

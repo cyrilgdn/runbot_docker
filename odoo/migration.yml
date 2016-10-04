@@ -1,0 +1,7 @@
+migration:
+  versions:
+    - version: 9.0.0
+      addons:
+        upgrade:
+          - base_setup
+          - runbot
